@@ -1,5 +1,4 @@
 import React from 'react';
-import ConceptMap from '../../components/ConceptMap';
 import LearnDetails from '../../components/LearnDetails';
 
 const LearnDetailsPage: React.FC = () => {
@@ -27,9 +26,6 @@ const LearnDetailsPage: React.FC = () => {
               <span className="text-xs font-medium text-slate-600">Leaf</span>
            </div>
         </div>
-        
-        {/* The D3 Concept Map Component */}
-        <ConceptMap />
       </div>
 
       <LearnDetails />

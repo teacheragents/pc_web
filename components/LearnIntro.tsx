@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Brain, Clock, BookOpen, RefreshCw, Users, Target, ArrowRight, ArrowDown, Layers } from 'lucide-react';
 
 export default function TaxonomyDiagram() {
-  const [hoveredDomain, setHoveredDomain] = useState(null);
+  const [hoveredDomain, setHoveredDomain] = useState<string | null>(null);
 
   const domains = [
     { id: 'L', letter: 'L', name: 'Learning Strategies', icon: BookOpen, color: 'bg-green-500', lightColor: 'bg-green-100', textColor: 'text-green-700', question: 'How do I study effectively?', blooms: ['Apply', 'Analyze', 'Create'], skills: ['Retrieval practice', 'Spaced repetition', 'Active reading', 'Transfer'] },
@@ -64,7 +64,7 @@ export default function TaxonomyDiagram() {
           <div className="md:col-span-1 flex items-center justify-center">
             <div className="hidden md:flex flex-col items-center">
               <ArrowRight className="text-gray-400" size={32} />
-              <span className="text-xs text-gray-500 mt-1 writing-mode-vertical" style={{ writingMode: 'vertical-rl', textOrientation: 'mixed' }}>enables</span>
+              <span className="text-xs text-gray-500 mt-1" style={{ writingMode: 'vertical-rl', textOrientation: 'mixed' }}>enables</span>
             </div>
             <div className="md:hidden">
               <ArrowDown className="text-gray-400" size={32} />
@@ -170,7 +170,7 @@ export default function TaxonomyDiagram() {
                 <h3 className="font-bold text-emerald-700 text-sm">LEARN Framework</h3>
               </div>
               <p className="text-xs text-gray-700 mb-2">Defines <strong>enabling capacities</strong>—the skills that make cognitive work possible.</p>
-              <div className="text-xs text-emerald-600 italic">"Can you sit down and do it?"</div>
+              <p className="text-xs text-emerald-600 italic">"Do you have the foundational skills (e.g., attention, organization) to engage in the work?"</p>
             </div>
 
             {/* Together */}
@@ -188,7 +188,7 @@ export default function TaxonomyDiagram() {
         {/* Key Insight */}
         <div className="mt-4 text-center">
           <div className="inline-block bg-gradient-to-r from-violet-500 to-emerald-500 text-white rounded-lg px-6 py-3 shadow-lg">
-            <p className="text-sm font-medium">Bloom's tells us <strong>WHAT</strong> to think. LEARN tells us <strong>HOW</strong> to learn.</p>
+            <p className="text-sm font-medium">Bloom's tells us <strong>WHAT</strong> to think. LEARN provides the skills for <strong>HOW</strong> to think.</p>
           </div>
         </div>
 

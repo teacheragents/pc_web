@@ -1,5 +1,4 @@
 import React from 'react';
-import ConceptMap from '../../components/ConceptMap';
 import LearnIntro from '../../components/LearnIntro';
 
 const ArchitecturePage: React.FC = () => {
@@ -28,8 +27,7 @@ const ArchitecturePage: React.FC = () => {
            </div>
         </div>
         
-        {/* The D3 Concept Map Component */}
-        <ConceptMap />
+        {/* The D3 Concept Map Component was here */}
       </div>
 
       <LearnIntro />
