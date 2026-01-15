@@ -1,0 +1,26 @@
+{
+  "apphosting": [
+    {
+      "backendId": "pcd-be",
+      "rootDir": "/home/user/pc-web-jan26",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log",
+        "functions"
+      ]
+    },
+    {
+      "backendId": "pcd-be",
+      "rootDir": "/",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log",
+        "functions"
+      ]
+    }
+  ]
+}
