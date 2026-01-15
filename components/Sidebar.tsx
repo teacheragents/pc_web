@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { LayoutDashboard, Map, GitBranch, Library, ChevronRight, ArrowLeft } from 'lucide-react';
+import { LayoutDashboard, Map, GitBranch, Library, ChevronRight, ArrowLeft, BookText } from 'lucide-react';
 
 const Sidebar: React.FC = () => {
   const location = useLocation();
@@ -12,17 +12,22 @@ const Sidebar: React.FC = () => {
       icon: LayoutDashboard,
     },
     {
-      title: 'Architecture',
+      title: 'Learning Framework',
       path: '/pcd/architecture',
       icon: Map,
     },
     {
-      title: 'Workflows',
+      title: 'LEARN - Details',
+      path: '/pcd/learn-details',
+      icon: BookText,
+    },
+    {
+      title: 'Learning Paths',
       path: '/pcd/workflows',
       icon: GitBranch,
     },
     {
-      title: 'Resources',
+      title: 'Videos',
       path: '/pcd/resources',
       icon: Library,
     },
@@ -32,9 +37,9 @@ const Sidebar: React.FC = () => {
     <aside className="fixed left-0 top-0 h-full w-64 bg-slate-50 border-r border-slate-200 flex flex-col z-50">
       <div className="p-6 border-b border-slate-100">
         <h1 className="text-lg font-bold text-slate-800 tracking-tight">
-          Research Lab
+          Guardian AIngel
         </h1>
-        <p className="text-xs text-slate-500 mt-1">Advanced Tutoring Systems</p>
+        <p className="text-xs text-slate-500 mt-1">Lifelong Learning and Guidance Systems</p>
       </div>
 
       <nav className="flex-1 overflow-y-auto py-6 px-3 space-y-1">

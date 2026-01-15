@@ -1,8 +1,8 @@
 import React from 'react';
 import ConceptMap from '../../components/ConceptMap';
-import LearnIntro from '../../components/LearnIntro';
+import LearnDetails from '../../components/LearnDetails';
 
-const ArchitecturePage: React.FC = () => {
+const LearnDetailsPage: React.FC = () => {
   return (
     <div className="h-[calc(100vh-8rem)] flex flex-col space-y-6 animate-in fade-in zoom-in duration-300">
       <header>
@@ -32,9 +32,9 @@ const ArchitecturePage: React.FC = () => {
         <ConceptMap />
       </div>
 
-      <LearnIntro />
+      <LearnDetails />
     </div>
   );
 };
 
-export default ArchitecturePage;
+export default LearnDetailsPage;

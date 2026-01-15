@@ -6,6 +6,7 @@ import OverviewPage from './pages/pcd/OverviewPage';
 import ArchitecturePage from './pages/pcd/ArchitecturePage';
 import WorkflowsPage from './pages/pcd/WorkflowsPage';
 import ResourcesPage from './pages/pcd/ResourcesPage';
+import LearnDetailsPage from './pages/pcd/LearnDetailsPage';
 
 const App: React.FC = () => {
   return (
@@ -19,6 +20,7 @@ const App: React.FC = () => {
           <Route index element={<Navigate to="/pcd/overview" replace />} />
           <Route path="overview" element={<OverviewPage />} />
           <Route path="architecture" element={<ArchitecturePage />} />
+          <Route path="learn-details" element={<LearnDetailsPage />} />
           <Route path="workflows" element={<WorkflowsPage />} />
           <Route path="resources" element={<ResourcesPage />} />
         </Route>
