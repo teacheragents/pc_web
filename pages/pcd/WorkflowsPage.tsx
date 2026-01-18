@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Bot, BrainCircuit, MessageSquareCode, Code, BookOpen } from 'lucide-react';
+import { Bot, BrainCircuit, MessageSquareCode, Code, BookOpen, ExternalLink } from 'lucide-react';
 import ChatPopup, { Agent } from '../../components/ChatPopup'; // Adjust path as needed
 
 const agentData: Agent[] = [
@@ -26,6 +26,25 @@ const agentData: Agent[] = [
     title: 'Socratic Tutor',
     description: 'Guide students toward self-discovery through probing questions rather than direct answers.',
     icon: MessageSquareCode,
+  },
+];
+
+const studentDocuments = [
+  {
+    student: 'Student 1',
+    reports: [
+      { year: 2025, grade: 7, url: 'https://storage.googleapis.com/ed_public_docs/student_1_grade_7_math_2025.pdf' },
+      { year: 2024, grade: 6, url: 'https://storage.googleapis.com/ed_public_docs/student_1_grade_6_math_2024.pdf' },
+      { year: 2023, grade: 5, url: 'https://storage.googleapis.com/ed_public_docs/student_1_grade_5_math_2023.pdf' },
+    ],
+  },
+  {
+    student: 'Student 2',
+    reports: [
+      { year: 2025, grade: 7, url: 'https://storage.googleapis.com/ed_public_docs/student_2_grade_7_math_2025.pdf' },
+      { year: 2024, grade: 6, url: 'https://storage.googleapis.com/ed_public_docs/student_2_grade_6_math_2024.pdf' },
+      { year: 2023, grade: 5, url: 'https://storage.googleapis.com/ed_public_docs/student_2_grade_5_math_2023.pdf' },
+    ],
   },
 ];
 
@@ -69,6 +88,35 @@ const AgenticWorkflowsPage: React.FC = () => {
             </p>
           </div>
         ))}
+      </div>
+
+      <div className="max-w-3xl">
+        <h2 className="text-2xl font-bold text-slate-900 mb-4">Anonymized Student STARR Reports</h2>
+        <p className="text-slate-600 mb-4">
+          Download the reports and use them for analysis by agents.
+        </p>
+        <div className="space-y-4">
+          {studentDocuments.map((studentData) => (
+            <div key={studentData.student}>
+              <h3 className="text-xl font-semibold text-slate-800">{studentData.student} STARR Report:</h3>
+              <ul className="list-disc list-inside space-y-2 mt-2">
+                {studentData.reports.map((report) => (
+                  <li key={report.url} className="text-slate-600">
+                    <a 
+                      href={report.url} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="text-blue-600 hover:underline inline-flex items-center"
+                    >
+                      {report.year} - Grade {report.grade}
+                      <ExternalLink size={16} className="ml-2" />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
       </div>
 
       <ChatPopup agent={activeAgent} onClose={handleClosePopup} />
