@@ -1,4 +1,4 @@
-import{j as e}from"./index-CY-DkmLc.js";import{M as t}from"./index-6Q6EIK3F.js";const n=`
+import{j as e}from"./index-BLK1dGTJ.js";import{M as t}from"./index-Cg-3pQDm.js";const n=`
 
 American K-12 education operates within a framework of state-mandated academic standards—comprehensive benchmarks such as the Texas Essential Knowledge and Skills (TEKS) that define what students should know and be able to do at each grade level. These standards serve important functions: they establish consistency across districts, provide accountability measures, and ensure baseline expectations for student achievement. Standardized assessments aligned to these benchmarks have become the primary mechanism for evaluating both student progress and institutional effectiveness. However, this architecture, while administratively coherent, creates an instructional environment where teaching gravitates toward coverage of standards and preparation for high-stakes tests rather than toward the deeper goal of genuine conceptual understanding.
 

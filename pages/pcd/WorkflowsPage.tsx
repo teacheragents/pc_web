@@ -33,17 +33,17 @@ const studentDocuments = [
   {
     student: 'Student 1',
     reports: [
-      { year: 2025, grade: 7, url: 'https://storage.googleapis.com/ed_public_docs/student_1_grade_7_math_2025.pdf' },
-      { year: 2024, grade: 6, url: 'https://storage.googleapis.com/ed_public_docs/student_1_grade_6_math_2024.pdf' },
-      { year: 2023, grade: 5, url: 'https://storage.googleapis.com/ed_public_docs/student_1_grade_5_math_2023.pdf' },
+      { year: 2025, grade: 7, url: 'https://storage.googleapis.com/pcd_public/student_1_grade_7_math_2025.pdf' },
+      { year: 2024, grade: 6, url: 'https://storage.googleapis.com/pcd_public/student_1_grade_6_math_2024.pdf' },
+      { year: 2023, grade: 5, url: 'https://storage.googleapis.com/pcd_public/student_1_grade_5_math_2023.pdf' },
     ],
   },
   {
     student: 'Student 2',
     reports: [
-      { year: 2025, grade: 7, url: 'https://storage.googleapis.com/ed_public_docs/student_2_grade_7_math_2025.pdf' },
-      { year: 2024, grade: 6, url: 'https://storage.googleapis.com/ed_public_docs/student_2_grade_6_math_2024.pdf' },
-      { year: 2023, grade: 5, url: 'https://storage.googleapis.com/ed_public_docs/student_2_grade_5_math_2023.pdf' },
+      { year: 2025, grade: 7, url: 'https://storage.googleapis.com/pcd_public/student_2_grade_7_math_2025.pdf' },
+      { year: 2024, grade: 6, url: 'https://storage.googleapis.com/pcd_public/student_2_grade_6_math_2024.pdf' },
+      { year: 2023, grade: 5, url: 'https://storage.googleapis.com/pcd_public/student_2_grade_5_math_2023.pdf' },
     ],
   },
 ];
