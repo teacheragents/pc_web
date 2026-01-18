@@ -22,6 +22,13 @@ const LandingPage: React.FC = () => {
           <p className="text-md md:text-lg text-indigo-200 max-w-2xl mx-auto">
             A research-driven approach that goes beyond teaching subjects to nurturing success—from misconception diagnosis to life-skill development, Kindergarten through Career.
           </p>
+          <div className="mt-8">
+            <Link to="/pcd/overview" className="inline-block">
+              <button className="bg-white/20 text-white font-semibold px-6 py-3 rounded-full backdrop-blur-lg border border-white/30 hover:bg-white/30 transition-colors duration-300 ease-in-out transform hover:scale-105">
+                More Info
+              </button>
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -37,8 +44,8 @@ const LandingPage: React.FC = () => {
               <div className="mb-4 inline-block bg-gradient-to-br from-red-400 to-pink-500 p-3 rounded-xl text-white">
                 <Heart size={32} />
               </div>
-              <h3 className="text-xl font-semibold mb-2">Your Child\'s Interests First</h3>
-              <p className="text-slate-600">We operate as a fiduciary for your child\'s future. Data is never sold—it\'s used solely to build a personalized path to success.</p>
+              <h3 className="text-xl font-semibold mb-2">Your Child's Interests First</h3>
+              <p className="text-slate-600">We operate as a fiduciary for your child's future. Data is never sold—it's used solely to build a personalized path to success.</p>
             </div>
             <div className="bg-slate-50 p-8 rounded-2xl shadow-sm border border-slate-100">
               <div className="mb-4 inline-block bg-gradient-to-br from-purple-400 to-indigo-500 p-3 rounded-xl text-white">
@@ -96,7 +103,7 @@ const LandingPage: React.FC = () => {
 
           <div className="grid md:grid-cols-3 gap-8 text-left">
             <StepCard icon={<LineChart />} title="Deep History Analysis" description="We ingest results from prior years—including STAR, MAP, and state exams—to build a comprehensive profile of strengths and gaps." />
-            <StepCard icon={<Crosshair />} title="Pinpointing the \'Why\'" description="Standard tutors tell you that you got a problem wrong. Guardian AIngel tells you why—identifying the precise conceptual misunderstanding at its root." />
+            <StepCard icon={<Crosshair />} title="Pinpointing the 'Why'" description="Standard tutors tell you that you got a problem wrong. Guardian AIngel tells you why—identifying the precise conceptual misunderstanding at its root." />
             <StepCard icon={<Route />} title="The Learning GPS" description="Like a navigation system that reroutes when you miss a turn, we adjust the path to bridge the gap—creating a custom route to mastery." />
           </div>
         </div>
@@ -109,7 +116,7 @@ const LandingPage: React.FC = () => {
             <Rocket size={48} />
           </div>
           <h2 className="text-4xl font-bold text-slate-900 mb-4">One Account. One Journey.</h2>
-          <p className="text-lg text-slate-600 mb-10">Whether you move across the street or across the country, Guardian AIngel carries the history, learning profile, and trust your child has built—ensuring there\'s never a "Day One" reset.</p>
+          <p className="text-lg text-slate-600 mb-10">Whether you move across the street or across the country, Guardian AIngel carries the history, learning profile, and trust your child has built—ensuring there's never a "Day One" reset.</p>
           
           <div className="flex items-center justify-center space-x-2 md:space-x-4">
             <JourneyPoint icon={<Baby />} label="K" />

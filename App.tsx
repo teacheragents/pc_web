@@ -17,7 +17,7 @@ const App: React.FC = () => {
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           {/* Public Landing Page */}
-          <Route path="/" element={<LandingPage />} />
+          <Route path="/landing" element={<LandingPage />} />
 
           {/* Research Content Routes (Hidden under /pcd prefix) */}
           <Route path="/pcd" element={<PcdLayout />}>
@@ -31,8 +31,8 @@ const App: React.FC = () => {
             <Route path="research" element={<ResearchPage />} />
           </Route>
 
-          {/* Fallback */}
-          <Route path="*" element={<Navigate to="/" replace />} />
+          {/* Fallback to landing */}
+          <Route path="*" element={<Navigate to="/landing" replace />} />
         </Routes>
       </Suspense>
     </HashRouter>
