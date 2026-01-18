@@ -7,6 +7,8 @@ import ArchitecturePage from './pages/pcd/ArchitecturePage';
 import WorkflowsPage from './pages/pcd/WorkflowsPage';
 import ResourcesPage from './pages/pcd/ResourcesPage';
 import LearnDetailsPage from './pages/pcd/LearnDetailsPage';
+import TechArchitecturePage from './pages/pcd/TechArchitecturePage';
+import ResearchPage from './pages/pcd/ResearchPage';
 
 const App: React.FC = () => {
   return (
@@ -21,8 +23,10 @@ const App: React.FC = () => {
           <Route path="overview" element={<OverviewPage />} />
           <Route path="architecture" element={<ArchitecturePage />} />
           <Route path="learn-details" element={<LearnDetailsPage />} />
+          <Route path="tech-architecture" element={<TechArchitecturePage />} />
           <Route path="workflows" element={<WorkflowsPage />} />
           <Route path="resources" element={<ResourcesPage />} />
+          <Route path="research" element={<ResearchPage />} />
         </Route>
 
         {/* Fallback */}

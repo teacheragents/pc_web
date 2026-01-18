@@ -2,7 +2,6 @@ import React from 'react';
 import ReactMarkdown from 'react-markdown';
 
 const markdownContent = `
-## Beyond Standards: The Case for Misconception and Life-Skills Guided Instruction in K-12 Education
 
 American K-12 education operates within a framework of state-mandated academic standards—comprehensive benchmarks such as the Texas Essential Knowledge and Skills (TEKS) that define what students should know and be able to do at each grade level. These standards serve important functions: they establish consistency across districts, provide accountability measures, and ensure baseline expectations for student achievement. Standardized assessments aligned to these benchmarks have become the primary mechanism for evaluating both student progress and institutional effectiveness. However, this architecture, while administratively coherent, creates an instructional environment where teaching gravitates toward coverage of standards and preparation for high-stakes tests rather than toward the deeper goal of genuine conceptual understanding.
 
@@ -136,7 +135,7 @@ const ResearchPage: React.FC = () => {
       <header className="max-w-3xl">
         <h1 className="text-3xl font-bold text-slate-900 mb-4">Research</h1>
         <p className="text-lg text-slate-600">
-          This page contains a research paper displayed in markdown format.
+        Beyond Standards: The Case for Misconception and Life-Skills Guided Instruction in K-12 Education.
         </p>
       </header>
 

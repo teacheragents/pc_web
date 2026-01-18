@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
 
 const markdownContent = `## The Different Layers in the System
 
@@ -80,7 +82,7 @@ const TechArchitecturePage: React.FC = () => {
       </div>
 
       <div className="max-w-3xl prose prose-slate">
-        <ReactMarkdown>{markdownContent}</ReactMarkdown>
+        <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{markdownContent}</ReactMarkdown>
       </div>
     </div>
   );
