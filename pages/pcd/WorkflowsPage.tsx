@@ -4,28 +4,28 @@ import ChatPopup, { Agent } from '../../components/ChatPopup'; // Adjust path as
 
 const agentData: Agent[] = [
   {
-    id: 'agent_001',
-    title: 'Socratic Tutor',
-    description: 'Guides students toward self-discovery by asking probing questions instead of giving direct answers.',
-    icon: MessageSquareCode,
-  },
-  {
     id: 'agent_002',
-    title: 'Misconception Detector',
-    description: 'Analyzes student input in real-time to spot and flag common misunderstandings or cognitive biases.',
+    title: 'Misconceptions Explorer',
+    description: 'Identify and address common misconceptions aligned to TEKS Mathematics standards for grades K–8.',
     icon: BrainCircuit,
   },
   {
     id: 'agent_003',
-    title: 'Curriculum Designer',
-    description: 'Dynamically adjusts the learning path and content sequence based on a student\'s performance and progress.',
+    title: 'Student Profile Generator',
+    description: 'Analyze past test results and additional inputs to generate baseline misconception profiles and personalized instructional pathways.',
     icon: BookOpen,
   },
-  {
+    {
     id: 'agent_004',
-    title: 'Code Debugger',
-    description: 'Helps students identify and understand errors in their code by providing hints and explanations.',
+    title: 'Instruction Flow Generator',
+    description: 'Design instructional sequences grounded in Cognitive Load Theory and targeted misconception remediation.',
     icon: Code,
+  },
+  {
+    id: 'agent_001',
+    title: 'Socratic Tutor',
+    description: 'Guide students toward self-discovery through probing questions rather than direct answers.',
+    icon: MessageSquareCode,
   },
 ];
 

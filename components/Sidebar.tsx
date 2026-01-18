@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { LayoutDashboard, Map, GitBranch, Library, ChevronRight, ArrowLeft, BookText } from 'lucide-react';
+import { LayoutDashboard, Map, GitBranch, Library, ChevronRight, ArrowLeft, BookText, Server, FileText } from 'lucide-react';
 
 const Sidebar: React.FC = () => {
   const location = useLocation();
@@ -22,6 +22,11 @@ const Sidebar: React.FC = () => {
       icon: BookText,
     },
     {
+      title: 'Technical Architecture',
+      path: '/pcd/tech-architecture',
+      icon: Server,
+    },
+    {
       title: 'Learning Paths',
       path: '/pcd/workflows',
       icon: GitBranch,
@@ -30,6 +35,11 @@ const Sidebar: React.FC = () => {
       title: 'Videos',
       path: '/pcd/resources',
       icon: Library,
+    },
+    {
+      title: 'Research',
+      path: '/pcd/research',
+      icon: FileText,
     },
   ];
 
