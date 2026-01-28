@@ -43,19 +43,48 @@ const ChatPopup: React.FC<ChatPopupProps> = ({ agent, onClose }) => {
 
     const userMessage: Message = { sender: 'user', text: input };
     setMessages(prev => [...prev, userMessage]);
+    const currentInput = input;
     setInput('');
 
-    const backendUrl = 'https://your-fastapi-backend.com/chat';
+    if (agent.title === 'Misconceptions Explorer') {
+      const backendUrl = 'https://www.lifelongcoach.org/genai/api/v1/pcd_mis';
+      const sessionId = 'ag1_' + Date.now();
 
-    try {
-      await new Promise(resolve => setTimeout(resolve, 500));
-      const agentResponse: Message = { sender: 'agent', text: `This is a mocked response for the ${agent.title} regarding "${input}". The real backend is not yet implemented.` };
-      setMessages(prev => [...prev, agentResponse]);
+      try {
+        const response = await fetch(backendUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            user_id: 'pcd_agent_1',
+            session_id: sessionId,
+            text_input: currentInput
+          })
+        });
 
-    } catch (error) {
-      console.error("Error communicating with the backend:", error);
-      const errorResponse: Message = { sender: 'agent', text: 'Sorry, I am having trouble connecting to my brain right now.' };
-      setMessages(prev => [...prev, errorResponse]);
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+
+        const data = await response.json();
+        const agentResponse: Message = { sender: 'agent', text: data.response_text };
+        setMessages(prev => [...prev, agentResponse]);
+
+      } catch (error) {
+        console.error("Error communicating with the backend:", error);
+        const errorResponse: Message = { sender: 'agent', text: 'Sorry, I am having trouble connecting to my brain right now.' };
+        setMessages(prev => [...prev, errorResponse]);
+      }
+    } else {
+      try {
+        await new Promise(resolve => setTimeout(resolve, 500));
+        const agentResponse: Message = { sender: 'agent', text: `This is a mocked response for the ${agent.title} regarding "${currentInput}". The real backend is not yet implemented.` };
+        setMessages(prev => [...prev, agentResponse]);
+
+      } catch (error) {
+        console.error("Error communicating with the backend:", error);
+        const errorResponse: Message = { sender: 'agent', text: 'Sorry, I am having trouble connecting to my brain right now.' };
+        setMessages(prev => [...prev, errorResponse]);
+      }
     }
   };
 

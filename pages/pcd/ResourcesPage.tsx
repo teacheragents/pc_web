@@ -5,7 +5,7 @@ const ResourcesPage: React.FC = () => {
     <div className="space-y-8 animate-in fade-in duration-500">
       <header>
         <h1 className="text-3xl font-bold text-slate-900 mb-4">Introductory Video</h1>
-        <div className="aspect-w-16 aspect-h-9">
+        <div className="aspect-[8/9]">
           <iframe 
             className="w-full h-full"
             src="https://www.youtube.com/embed/7BLfuIxp7ng" 
