@@ -23,10 +23,11 @@ interface ChatPopupProps {
 const ChatPopup: React.FC<ChatPopupProps> = ({ agent, onClose }) => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
-  const [file, setFile] = useState<File | null>(null);
+  const [files, setFiles] = useState<File[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const chatContainerRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const [sessionId] = useState(() => `ag1_${Date.now()}`);
 
   useEffect(() => {
     if (agent) {
@@ -34,7 +35,7 @@ const ChatPopup: React.FC<ChatPopupProps> = ({ agent, onClose }) => {
         { sender: 'agent', text: `Hello! I am the ${agent.title}. How can I help you today?` }
       ]);
       setInput('');
-      setFile(null);
+      setFiles([]);
     }
   }, [agent]);
 
@@ -45,14 +46,14 @@ const ChatPopup: React.FC<ChatPopupProps> = ({ agent, onClose }) => {
   }, [messages, isLoading]);
 
   const handleSend = async () => {
-    if ((!input.trim() && !file) || !agent) return;
+    if ((!input.trim() && files.length === 0) || !agent) return;
 
     const userMessage: Message = { sender: 'user', text: input };
     setMessages(prev => [...prev, userMessage]);
     const currentInput = input;
-    const currentFile = file;
+    const currentFiles = files;
     setInput('');
-    setFile(null);
+    setFiles([]);
     setIsLoading(true);
 
     const agentBackendUrls: { [key: string]: string } = {
@@ -65,39 +66,51 @@ const ChatPopup: React.FC<ChatPopupProps> = ({ agent, onClose }) => {
     const backendUrl = agentBackendUrls[agent.id];
 
     if (backendUrl) {
-      const sessionId = `ag1_${Date.now()}`;
       try {
         let response;
         if (agent.id === 'agent_002') {
           response = await fetch(backendUrl, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 
+              'Content-Type': 'application/json',
+              'X-User-Id': 'pcd_agent_1',
+              'X-Session-Id': sessionId
+            },
             body: JSON.stringify({
-              user_id: 'pcd_agent_1',
-              session_id: sessionId,
               text_input: currentInput
             })
           });
         } else {
           const formData = new FormData();
           formData.append('text_input', currentInput);
-          if (currentFile) {
-            formData.append('files', currentFile);
-          }
+          currentFiles.forEach(file => {
+            formData.append('files', file);
+          });
 
           response = await fetch(backendUrl, {
             method: 'POST',
+            headers: {
+              'X-User-Id': 'pcd_agent_1',
+              'X-Session-Id': sessionId
+            },
             body: formData,
           });
         }
 
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+            if (response.status === 422) {
+                const error = await response.json();
+                console.error('Validation error:', error.detail);
+                const errorResponse: Message = { sender: 'agent', text: 'There was a validation error. Please check your input.' };
+                setMessages(prev => [...prev, errorResponse]);
+            } else {
+                 throw new Error('Network response was not ok');
+            }
+        } else {
+            const data = await response.json();
+            const agentResponse: Message = { sender: 'agent', text: data.response_text };
+            setMessages(prev => [...prev, agentResponse]);
         }
-
-        const data = await response.json();
-        const agentResponse: Message = { sender: 'agent', text: data.response_text };
-        setMessages(prev => [...prev, agentResponse]);
 
       } catch (error) {
         console.error("Error communicating with the backend:", error);
@@ -107,20 +120,18 @@ const ChatPopup: React.FC<ChatPopupProps> = ({ agent, onClose }) => {
         setIsLoading(false);
       }
     } else {
-      // This block will now only be reached if an agent without a defined backend URL is used.
+      // Mocked response for agents without a backend
       try {
         await new Promise(resolve => setTimeout(resolve, 500));
         let responseText = `This is a mocked response for the ${agent.title} regarding "${currentInput}".`;
-        if (currentFile) {
-          responseText += ` And the file "${currentFile.name}".`;
+        if (currentFiles.length > 0) {
+            responseText += ` And the files: ${currentFiles.map(f => f.name).join(', ')}.`;
         }
         responseText += " The real backend is not yet implemented.";
         const agentResponse: Message = { sender: 'agent', text: responseText };
         setMessages(prev => [...prev, agentResponse]);
       } catch (error) {
         console.error("Error with mocked response:", error);
-        const errorResponse: Message = { sender: 'agent', text: 'Sorry, there was an error with the mocked response.' };
-        setMessages(prev => [...prev, errorResponse]);
       } finally {
         setIsLoading(false);
       }
@@ -128,9 +139,13 @@ const ChatPopup: React.FC<ChatPopupProps> = ({ agent, onClose }) => {
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files.length > 0) {
-      setFile(e.target.files[0]);
+    if (e.target.files) {
+      setFiles(prevFiles => [...prevFiles, ...Array.from(e.target.files as FileList)]);
     }
+  };
+
+  const removeFile = (fileName: string) => {
+    setFiles(prevFiles => prevFiles.filter(file => file.name !== fileName));
   };
 
   const triggerFileInput = () => {
@@ -138,15 +153,18 @@ const ChatPopup: React.FC<ChatPopupProps> = ({ agent, onClose }) => {
   };
 
   if (!agent) return null;
+  
+  const supportsFiles = agent.id !== 'agent_002';
 
   return (
     <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 animate-in fade-in duration-300">
       <input
         type="file"
+        multiple
         ref={fileInputRef}
         onChange={handleFileChange}
         className="hidden"
-        accept={agent.capabilities.includes('image') && agent.capabilities.includes('pdf') ? "image/*,application/pdf" : agent.capabilities.includes('image') ? "image/*" : agent.capabilities.includes('pdf') ? "application/pdf" : ""}
+        accept=".pdf,.png,.jpg,.jpeg,.gif,.webp"
       />
       <div className="bg-white rounded-2xl shadow-2xl w-full max-w-3xl max-h-[80vh] flex flex-col">
         <header className="flex items-center justify-between p-5 border-b bg-slate-50 rounded-t-2xl">
@@ -183,14 +201,21 @@ const ChatPopup: React.FC<ChatPopupProps> = ({ agent, onClose }) => {
         </div>
 
         <div className="p-6 border-t bg-white rounded-b-2xl">
-          {file && (
-            <div className="flex items-center justify-between mb-2 text-sm">
-              <p className="text-slate-600">Attached file: {file.name}</p>
-              <button onClick={() => setFile(null)} className="text-red-500 hover:text-red-700">
-                Remove
-              </button>
-            </div>
-          )}
+            {files.length > 0 && (
+                <div className="mb-2 text-sm space-y-1">
+                    <p className="font-medium text-slate-700">Attached files:</p>
+                    <ul className="list-disc list-inside">
+                    {files.map((file, index) => (
+                        <li key={index} className="text-slate-600 flex items-center justify-between">
+                            <span>{file.name}</span>
+                            <button onClick={() => removeFile(file.name)} className="text-red-500 hover:text-red-700 font-semibold">
+                                Remove
+                            </button>
+                        </li>
+                    ))}
+                    </ul>
+                </div>
+            )}
           <div className="relative flex items-center">
             <input
               type="text"
@@ -201,18 +226,13 @@ const ChatPopup: React.FC<ChatPopupProps> = ({ agent, onClose }) => {
               className="flex-1 p-4 pr-32 border-2 border-slate-200 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 text-base"
             />
             <div className="absolute right-16 flex items-center space-x-1">
-              {agent.capabilities.includes('image') && (
+              {supportsFiles && (
                 <button onClick={triggerFileInput} className="p-3 rounded-full hover:bg-slate-200 transition-colors">
                   <Paperclip size={22} className="text-slate-500" />
                 </button>
               )}
-              {agent.capabilities.includes('pdf') && (
-                <button onClick={triggerFileInput} className="p-3 rounded-full hover:bg-slate-200 transition-colors">
-                  <FileUp size={22} className="text-slate-500" />
-                </button>
-              )}
             </div>
-             <button onClick={handleSend} className="absolute right-3 top-1/2 -translate-y-1/2 p-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 disabled:bg-blue-300 disabled:cursor-not-allowed transition-colors" disabled={(!input.trim() && !file) || isLoading}>
+             <button onClick={handleSend} className="absolute right-3 top-1/2 -translate-y-1/2 p-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 disabled:bg-blue-300 disabled:cursor-not-allowed transition-colors" disabled={(files.length === 0 && !input.trim()) || isLoading}>
               <Send size={24} />
             </button>
           </div>
