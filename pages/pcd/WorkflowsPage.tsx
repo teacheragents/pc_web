@@ -13,7 +13,7 @@ const agentData: Agent[] = [
   {
     id: 'agent_003',
     title: 'Student Profile Generator',
-    description: 'Analyze past test results and additional inputs to generate baseline misconception profiles and personalized instructional pathways.',
+    description: 'Analyze multi year STAAR results and additional inputs to generate baseline misconception profiles and personalized instructional pathways.',
     icon: BookOpen,
     capabilities: ['text', 'image', 'pdf'],
   },
@@ -69,6 +69,8 @@ const AgenticWorkflowsPage: React.FC = () => {
         <h1 className="text-3xl font-bold text-slate-900 mb-4">Multi-Agent Interaction Showcase</h1>
         <p className="text-lg text-slate-600">
           This page demonstrates interactions with multiple specialized AI agents. Each agent possesses a different context and expertise. Click on an agent to start a conversation. Note: Only one agent can be active at a time.
+          If you do not have sample test results reports, you may download and use
+          the samples provided.
         </p>
       </header>
 
@@ -95,16 +97,20 @@ const AgenticWorkflowsPage: React.FC = () => {
       </div>
 
       <div className="max-w-3xl">
-        <h2 className="text-2xl font-bold text-slate-900 mb-4">Anonymized Student STARR Reports</h2>
+        <h2 className="text-2xl font-bold text-slate-900 mb-4">Anonymized Student STAAR Reports</h2>
         <p className="text-slate-600 mb-4">
           Download the reports and use them for analysis by agents.
           For example, download use the PDFs as samples for the generation of accurate student academic profiles.
+
+          If you have multi-year reports of your students, please feel free to try. We do not
+          save any files you upload. We prefer you remove all personally identifiable
+          information from the files.
 
         </p>
         <div className="space-y-4">
           {studentDocuments.map((studentData) => (
             <div key={studentData.student}>
-              <h3 className="text-xl font-semibold text-slate-800">{studentData.student} STARR Report:</h3>
+              <h3 className="text-xl font-semibold text-slate-800">{studentData.student} STAAR Report:</h3>
               <ul className="list-disc list-inside space-y-2 mt-2">
                 {studentData.reports.map((report) => (
                   <li key={report.url} className="text-slate-600">
