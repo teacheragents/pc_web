@@ -8,24 +8,28 @@ const agentData: Agent[] = [
     title: 'Misconceptions Explorer',
     description: 'Identify and address common misconceptions aligned to TEKS Mathematics standards for grades K–8.',
     icon: BrainCircuit,
+    capabilities: ['text'],
   },
   {
     id: 'agent_003',
     title: 'Student Profile Generator',
     description: 'Analyze past test results and additional inputs to generate baseline misconception profiles and personalized instructional pathways.',
     icon: BookOpen,
+    capabilities: ['text', 'image', 'pdf'],
   },
     {
     id: 'agent_004',
     title: 'Instruction Flow Generator',
     description: 'Design instructional sequences grounded in Cognitive Load Theory and targeted misconception remediation.',
     icon: Code,
+    capabilities: ['text', 'image', 'pdf'],
   },
   {
     id: 'agent_001',
     title: 'Socratic Tutor',
     description: 'Guide students toward self-discovery through probing questions rather than direct answers.',
     icon: MessageSquareCode,
+    capabilities: ['text', 'image', 'pdf'],
   },
 ];
 
