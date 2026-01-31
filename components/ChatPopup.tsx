@@ -1,6 +1,8 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { X, Send, Paperclip, FileUp } from 'lucide-react';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 export interface Agent {
   id: string;
@@ -183,7 +185,11 @@ const ChatPopup: React.FC<ChatPopupProps> = ({ agent, onClose }) => {
           {messages.map((msg, index) => (
             <div key={index} className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
                <div className={`rounded-xl px-5 py-3 max-w-xl shadow-sm text-base ${msg.sender === 'user' ? 'bg-blue-600 text-white' : 'bg-white text-slate-800'}`}>
-                {msg.text}
+                {msg.sender === 'agent' ? (
+                  <ReactMarkdown remarkPlugins={[remarkGfm]}>{msg.text}</ReactMarkdown>
+                ) : (
+                  msg.text
+                )}
               </div>
             </div>
           ))}

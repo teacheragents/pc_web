@@ -98,6 +98,8 @@ const AgenticWorkflowsPage: React.FC = () => {
         <h2 className="text-2xl font-bold text-slate-900 mb-4">Anonymized Student STARR Reports</h2>
         <p className="text-slate-600 mb-4">
           Download the reports and use them for analysis by agents.
+          For example, download use the PDFs as samples for the generation of accurate student academic profiles.
+
         </p>
         <div className="space-y-4">
           {studentDocuments.map((studentData) => (
