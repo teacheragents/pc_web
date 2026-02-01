@@ -5,7 +5,8 @@ import rehypeRaw from 'rehype-raw';
 
 const markdownContent = `## The Different Layers in the System
 
-## Layer 4: The Foundation Pipelines (Planning & Preparation)
+---
+## **Layer 4: The Foundation Pipelines** (Planning & Preparation)
 **The Challenge:** Ensuring AI content is grade-level appropriate and pedagogically sound.
 
 **The Solution:** This layer represents the intensive planning phase where humans and AI operate as equal partners to establish "ground truth."
@@ -14,10 +15,12 @@ const markdownContent = `## The Different Layers in the System
 *   **Misconception Generation:** To predict where students will fail, teachers provide "seed" observations of common struggles. The AI creates a database of potential error modes (The "Error DB").
 *   **Safety & Appropriateness:** By utilizing grade-level teaching materials as the source data and requiring human validation before data moves upstream, we ensure all content is aligned with curriculum standards.
 
-## Layer 3: The Data Core (The Knowledge Engine)
+---
+## **Layer 3: The Data Core** (The Knowledge Engine)
 This layer acts as the semantic bridge, housing the Misconceptions DB and Knowledge Graph. It distinguishes this system from generic AI tools by maintaining a persistent **Student Profile**. This profile tracks not just correct answers, but specific knowledge gaps and behavioral patterns, enabling the system to \"remember\" the student\'s unique learning journey.
 
-## Layer 2: The Adaptive Engines (Differentiation & Pedagogy)
+---
+## **Layer 2: The Adaptive Engines** (Differentiation & Pedagogy)
 **The Challenge:** How is this better than traditional instruction?
 
 **The Solution:** In a classroom of 30, a teacher cannot adjust the cognitive load for every student simultaneously. Layer 2 utilizes semi-autonomous agents to do exactly that.
@@ -26,14 +29,16 @@ This layer acts as the semantic bridge, housing the Misconceptions DB and Knowle
 *   **Cognitive Calibration:** This is the key differentiator. The AI monitors the student’s \"Capacity\" and dynamically adjusts the difficulty (Scaffolding). If a student is overwhelmed, the AI \"gears down\" the complexity to keep them in an optimal flow state—maintaining engagement without frustration.
 *   **Experience Personalizer:** To ensure students can connect the lesson to their own experiences, this engine tunes the interface and content style based on learner preferences (e.g., gamified vs. textual).
 
-## Layer 1: The Interaction Layer (Engagement)
+---
+## **Layer 1: The Interaction Layer** (Engagement)
 The Session Manager ensures a seamless bidirectional flow. Students interact via a conversational interface that hides the complexity of the multi-agent processing.
 
 *   **Engagement Evidence:** Pilot runs and demo videos show high student enthusiasm. Students are not passively consuming content; they are engaged in a dialogue that adapts to their inputs.
 
 ***
 
-# Quality Assurance & Verification
+---
+# **Quality Assurance & Verification**
 Trust in AI is paramount. We implemented a rigorous verification protocol:
 
 1.  **Human Oversight:** During the \"Foundation\" phase (Layer 4), every concept and misconception was reviewed by educators.
@@ -42,7 +47,8 @@ Trust in AI is paramount. We implemented a rigorous verification protocol:
 
 ***
 
-# Team Learning & Impact
+---
+# **Team Learning & Impact**
 
 **What we learned:**
 Integrating AI into education is high-friction at the start but offers high-reward at scale. The team discovered that while the initial \"Foundation Pipelines\" require significant human effort (prompt engineering, data review), the payoff during the \"Deployment\" phase is immense. The AI acts as a tireless teaching assistant, scaling the teacher\'s best strategies to infinite students.
@@ -52,7 +58,8 @@ Pilot feedback indicates strong engagement. Formal assessments are planned follo
 
 ***
 
-# Technical & Process Matrix
+---
+# **Technical & Process Matrix**
 
 | Component | Method / Technology | Human / AI Roles |
 | :--- | :--- | :--- |
