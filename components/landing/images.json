@@ -1,0 +1,20 @@
+[
+  {
+      "id": "hero",
+      "description": "A child focused on learning with a warm, encouraging atmosphere.",
+      "imageUrl": "https://images.unsplash.com/photo-1584697964328-b1e7f63dca95?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8Y2hpbGQlMjBsZWFybmluZ3xlbnwwfHx8fDE3NjQxOTA0MDd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "child learning"
+  },
+  {
+      "id": "protector",
+      "description": "A digital shield protecting a child's data.",
+      "imageUrl": "https://images.unsplash.com/photo-1667453466805-75bbf36e8707?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxkYXRhJTIwcHJpdmFjeXxlbnwwfHx8fDE3NjQyNjU5OTl8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "data privacy"
+  },
+  {
+      "id": "mentor",
+      "description": "A supportive mentor figure guiding a student.",
+      "imageUrl": "https://images.unsplash.com/photo-1577896851231-70ef18881754?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHx0ZWFjaGVyJTIwc3R1ZGVudHxlbnwwfHx8fDE3NjQyMTc0NjB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "teacher student"
+  }
+]
