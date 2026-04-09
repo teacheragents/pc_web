@@ -32,7 +32,7 @@ const Sidebar: React.FC = () => {
       icon: GitBranch,
     },
     {
-      title: 'Videos',
+      title: 'About Us',
       path: '/pcd/resources',
       icon: Library,
     },
